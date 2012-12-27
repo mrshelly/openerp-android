@@ -9,6 +9,7 @@ class res_sms_message(osv.osv):
     _rec_name = 'address'
 
     _columns = {
+        'simcard_id': fields.many2one('sim.card', 'Sim Card'),
         'sim_id': fields.integer('Sim Card ID', help="The SIM Card sequence."),
         'protocol': fields.integer('SMS Protocol'),
         'type': fields.integer('Type'),

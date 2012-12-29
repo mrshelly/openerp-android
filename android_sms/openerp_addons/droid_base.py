@@ -99,4 +99,14 @@ class sim_card(osv.osv):
 
 sim_card()
 
+class droid_devices_inherit_sms_card(osv.osv):
+    _name = "droid.device"
+    _inherit = "droid.device"
+
+    _columns = {
+        'sms_simcard_id': fields.many2one('sim.card', 'SMS SimCard', required=True),
+    }
+
+droid_devices_inherit_sms_card()
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

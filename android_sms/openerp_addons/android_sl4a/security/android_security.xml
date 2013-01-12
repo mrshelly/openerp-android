@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+
+    <record id="android_sl4a.group_android_base" model="res.groups">
+        <field name="name">Android Base User</field>
+    </record>
+    <record id="android_sl4a.group_android_manage" model="res.groups">
+        <field name="name">Android Manage</field>
+    </record>
+
+</data>
+</openerp>
+

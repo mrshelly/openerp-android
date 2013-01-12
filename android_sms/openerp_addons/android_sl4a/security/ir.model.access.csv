@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_droid_device_android_base,droid.device android_base,android_sl4a.model_droid_device,android_sl4a.group_android_base,1,0,0,0
+access_sim_card_android_base,sim.card android_base,android_sl4a.model_sim_card,android_sl4a.group_android_base,1,0,0,0
+access_res_sms_message_android_base,res.sms.message android_base,android_sl4a.model_res_sms_message,android_sl4a.group_android_base,1,1,1,0
+
+access_droid_device_android_manage,droid.device android_manage,android_sl4a.model_droid_device,android_sl4a.group_android_manage,1,1,1,1
+access_sim_card_android_manage,sim.card android_manage,android_sl4a.model_sim_card,android_sl4a.group_android_manage,1,1,1,1
+access_res_sms_message_android_manage,res.sms.message android_manage,android_sl4a.model_res_sms_message,android_sl4a.group_android_manage,1,1,1,1

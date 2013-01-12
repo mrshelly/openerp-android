@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <!-- Menuitem -->
+            <menuitem name="Android Device" id="base.menu_android_device" sequence="120"/>
+            <menuitem name="Android Devices" parent="base.menu_android_device" id="menu_android_devices" sequence="60"/>
+
+            <menuitem name="Configuration" parent="base.menu_android_device" id="menu_configuration"/>
+
+        <!-- Android Device View-->
+            <record model="ir.ui.view" id="view_android_device_form">
+                <field name="name">droid.device.form</field>
+                <field name="model">droid.device</field>
+                <field name="arch" type="xml">
+                    <form string="Android Devices" version="7.0">
+                        <header>
+                                <button name="act_refresh" type="object" string="Refresh" class="oe_highlight" />
+                            <field name="state" widget="statusbar" statusbar_colors='{"online":"green","offline":"red","except":"yellow"}'/>
+                        </header>
+                        <sheet string="Android Devices">
+                            <h1>
+                                <field name="name" col="4"/>
+                            </h1>
+                            <group col="4">
+                                <group col="2">
+                                    <field name="code"/>
+                                    <field name="host"/>
+                                </group>
+                                <group col="2">
+                                    <field name="sms_simcard_id"/>
+                                    <field name="port"/>
+                                </group>
+                            </group>
+                            <field name="simcard_ids" colspan="4">
+                                <tree string="Sim Card" editable="bottom">
+                                    <field name="code"/>
+                                    <field name="name"/>
+                                    <field name="isp"/>
+                                    <field name="active"/>
+                                </tree>
+                            </field>
+                            <group col="4">
+                                <group col="2">
+                                    <field name="last_connect_ts"/>
+                                    <field name="active"/>
+                                </group>
+                                <group col="2">
+                                    <field name="last_offline_ts"/>
+                                </group>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+            <record model="ir.ui.view" id="view_android_device_tree">
+                <field name="name">droid.device.tree</field>
+                <field name="model">droid.device</field>
+                <field name="arch" type="xml">
+                    <tree string="Android Devices">
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="host"/>
+                        <field name="port"/>
+                        <field name="sms_simcard_id"/>
+                        <field name="simcard_ids"/>
+                        <field name="last_connect_ts"/>
+                        <field name="last_offline_ts"/>
+                        <field name="active"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </record>
+            <record model="ir.ui.view" id="view_android_device_search">
+                <field name="name">droid.device.search</field>
+                <field name="model">droid.device</field>
+                <field name="arch" type="xml">
+                    <search string="Android Devices">
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="host"/>
+                        <field name="port"/>
+                        <field name="sms_simcard_id"/>
+                        <field name="simcard_ids"/>
+                        <field name="last_connect_ts"/>
+                        <field name="last_offline_ts"/>
+                        <field name="active"/>
+                        <field name="state"/>
+                    </search>
+                </field>
+            </record>
+            <record model="ir.actions.act_window" id="action_android_device">
+                <field name="name">Android Devices</field>
+                <field name="res_model">droid.device</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+                <field name="search_view_id" ref="view_android_device_search"/>
+            </record>
+
+            <menuitem name="Android Device" parent="menu_android_devices" id="menu_android_device" action="action_android_device" sequence="20"/>
+
+        <!-- SIM Card View-->
+            <record model="ir.ui.view" id="view_sim_card_form">
+                <field name="name">sim.card.form</field>
+                <field name="model">sim.card</field>
+                <field name="arch" type="xml">
+                    <form string="SIM Card" version="7.0">
+                        <header>
+                                <button name="act_get_allsms" type="object" string="SMS Receive" class="oe_highlight" />
+                            <field name="state" widget="statusbar" statusbar_colors='{"online":"green","offline":"red","except":"yellow"}'/>
+                        </header>
+                        <sheet string="SIM Card">
+                            <h1>
+                                <field name="name" col="4"/>
+                            </h1>
+                            <group col="4">
+                                <group col="2">
+                                    <field name="code"/>
+                                    <field name="isp"/>
+                                </group>
+                                <group col="2">
+                                    <field name="device_id"/>
+                                    <field name="active"/>
+                                </group>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+            <record model="ir.ui.view" id="view_sim_card_tree">
+                <field name="name">sim.card.tree</field>
+                <field name="model">sim.card</field>
+                <field name="arch" type="xml">
+                    <tree string="SIM Card">
+                        <field name="state"/>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="device_id"/>
+                        <field name="isp"/>
+                        <field name="active"/>
+                    </tree>
+                </field>
+            </record>
+            <record model="ir.ui.view" id="view_sim_card_search">
+                <field name="name">sim.card.search</field>
+                <field name="model">sim.card</field>
+                <field name="arch" type="xml">
+                    <search string="SIM Card">
+                        <field name="state"/>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="device_id"/>
+                        <field name="isp"/>
+                        <field name="active"/>
+                    </search>
+                </field>
+            </record>
+            <record model="ir.actions.act_window" id="action_sim_card">
+                <field name="name">SIM Card</field>
+                <field name="res_model">sim.card</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+                <field name="search_view_id" ref="view_sim_card_search"/>
+            </record>
+
+            <menuitem name="Sim Card" parent="menu_android_devices" id="menu_sim_card" action="action_sim_card" sequence="20"/>
+
+    </data>
+</openerp>

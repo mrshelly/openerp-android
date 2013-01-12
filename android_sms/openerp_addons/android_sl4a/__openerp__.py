@@ -14,7 +14,8 @@
     'update_xml': [
         'security/android_security.xml',
         'security/ir.model.access.csv',
-        'android_sms_view.xml',
+        'view/android_device_view.xml',
+        'view/message_view.xml',
     ],
     'demo_xml': [],
     'installable': True,

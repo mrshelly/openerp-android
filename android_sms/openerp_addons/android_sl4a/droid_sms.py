@@ -10,6 +10,11 @@ class res_sms_message(osv.osv):
 
     _columns = {
         'simcard_id': fields.many2one('sim.card', 'Sim Card'),
+        'folder': fields.selection([
+            ('inbox', 'In Box'),
+            ('outbox', 'Out Box'),
+            ('draft', 'Draft Box'),
+            ], 'Folder', help="SMS Message Folder."),
         'sim_id': fields.char('Sim Card ID', help="The SIM Card sequence."),
         'protocol': fields.integer('SMS Protocol'),
         'type': fields.integer('Type'),
@@ -28,6 +33,10 @@ class res_sms_message(osv.osv):
         'o_id': fields.integer('Source ID'),
         'error_code': fields.char('Error Code', size=10),
         'status': fields.char('Status', size=20),
+    }
+
+    _defaults = {
+        'folder': 'inbox',
     }
 
 res_sms_message()

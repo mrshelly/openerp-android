@@ -83,7 +83,7 @@ class droid_devices(osv.osv):
                 finally:
                     time.sleep(ts)
                 break
-        return ret 
+        return ret
 
     def act_refresh(self, cr, uid, ids, context=None):
         if context is None:
@@ -123,7 +123,7 @@ class sim_card(osv.osv):
         ('code', 'unique (code)', 'The code of the sim card must be unique !')
     ]
 
-    def act_get_allsms(self, cr, uid, ids, context=None):
+    def get_allsms(self, cr, uid, ids, context=None):
         if context is None:
             context = {}
         if isinstance(ids, (int, long)):
@@ -131,13 +131,14 @@ class sim_card(osv.osv):
         device_obj = self.pool.get('droid.device')
         sms_msg_obj = self.pool.get('res.sms.message')
         res = self.browse(cr, uid, ids, context=context)
-        ret = {'type':'ir.actions.act_window_close'}
+        ret = []
         for r in res:
             if r.device_id.sms_simcard_id.id != r.id:
                 continue
             device_obj.test_connect(cr, uid, r.device_id.id, context=context)
             if r.active:
                 attrs = device_obj._droid[str(r.device_id.id)].smsGetAttributes().result
+                time.sleep(0.01)
                 msg_res = device_obj._droid[str(r.device_id.id)].smsGetMessages(False, 'inbox', attrs).result
                 if isinstance(msg_res, list) and len(msg_res)>0:
                     for rr in msg_res:
@@ -163,7 +164,28 @@ class sim_card(osv.osv):
                             'o_id': int(rr['_id']),
                             'error_code': rr['error_code'],
                         }
-                        sms_msg_obj.create(cr, uid, tmp_res, context=context)
+
+                        tmp_res.update({'folder': 'inbox'})
+                        ret.append(sms_msg_obj.create(cr, uid, tmp_res, context=context))
+        return ret
+
+    def act_get_allsms(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        sms_ids = self.get_allsms(cr, uid, ids, context=context)
+        ret ={
+            'name': _('SMS Messages'),
+            'type': 'ir.actions.act_window',
+            'domain': [('folder', '=', 'inbox')],
+            'context': context,
+            'res_model': 'res.sms.message',
+            'view_type': 'form',
+            'view_mode': 'tree,form',
+            'target': 'iframe',
+            'auto_refresh': 20,
+        }
         return ret
 
 sim_card()

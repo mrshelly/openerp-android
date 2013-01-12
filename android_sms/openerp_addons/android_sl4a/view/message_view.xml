@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <!-- Menuitem -->
+            <menuitem name="SMS Messages" parent="base.menu_android_device" id="menu_res_sms_messages" sequence="60"/>
+
+        <!-- Res SMS Message View-->
+            <record model="ir.ui.view" id="view_res_sms_message_form">
+                <field name="name">res.sms.message.form</field>
+                <field name="model">res.sms.message</field>
+                <field name="arch" type="xml">
+                    <form string="SMS Messages" version="7.0">
+                        <sheet string="SMS Messages">
+                            <h1>
+                                <field name="address" col="4"/>
+                            </h1>
+                            <field name="body" col="4"/>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+            <record model="ir.ui.view" id="view_res_sms_message_tree">
+                <field name="name">res.sms.message.tree</field>
+                <field name="model">res.sms.message</field>
+                <field name="arch" type="xml">
+                    <tree string="SMS Messages">
+                        <field name="address"/>
+                        <field name="body"/>
+                    </tree>
+                </field>
+            </record>
+            <record model="ir.ui.view" id="view_res_sms_message_search">
+                <field name="name">res.sms.message.search</field>
+                <field name="model">res.sms.message</field>
+                <field name="arch" type="xml">
+                    <search string="SMS Messages">
+                        <field name="address"/>
+                        <field name="body"/>
+                    </search>
+                </field>
+            </record>
+            <record model="ir.actions.act_window" id="action_res_sms_message">
+                <field name="name">SMS Messages</field>
+                <field name="res_model">res.sms.message</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+                <field name="search_view_id" ref="view_res_sms_message_search"/>
+            </record>
+
+            <menuitem name="SMS Message" parent="menu_res_sms_messages" id="menu_res_sms_message" action="action_res_sms_message" sequence="20"/>
+
+    </data>
+</openerp>

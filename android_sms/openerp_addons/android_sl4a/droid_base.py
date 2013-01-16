@@ -37,6 +37,9 @@ class droid_devices(osv.osv):
     }
 
     def _init_instance(self, cr, uid, ids, context=None):
+        '''
+            Init the device connect pool.
+        '''
         if context is None:
             context = {}
         if isinstance(ids, (int, long)):
@@ -53,6 +56,9 @@ class droid_devices(osv.osv):
         return ret
 
     def test_connect(self, cr, uid, ids, context=None):
+        '''
+            To check the connect status.
+        '''
         if context is None:
             context = {}
         if isinstance(ids, (int, long)):
@@ -86,6 +92,9 @@ class droid_devices(osv.osv):
         return ret
 
     def act_refresh(self, cr, uid, ids, context=None):
+        '''
+            To check the connect status. and update the status of android device.
+        '''
         if context is None:
             context = {}
         self.test_connect(cr, uid, ids, context=context)
@@ -124,6 +133,9 @@ class sim_card(osv.osv):
     ]
 
     def get_allsms(self, cr, uid, ids, context=None):
+        '''
+            Get all sms message of the android device.
+        '''
         if context is None:
             context = {}
         if isinstance(ids, (int, long)):

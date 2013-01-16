@@ -5,6 +5,7 @@
     'version': '0.2',
     'category': 'Generic Modules/Messages',
     'description': """
+        To communicate android device by SL4A(Script Layer for Android)
     """,
     'author': 'mrshelly',
     'website': 'https://github.com/mrshelly/openerp-android',

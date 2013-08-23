@@ -3,9 +3,9 @@
 import socket,time
 socket.setdefaulttimeout(3)
 
-from osv import fields, osv
-from tools.translate import _
-from sl4a import android
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+from openerp.android_sl4a.sl4a import android
 
 socket_trytimes = [0.1, 2]
 
@@ -161,17 +161,17 @@ class sim_card(osv.osv):
                             'body': rr['body'],
                             'status': rr['status'],
                             'protocol': int(rr['protocol']),
-                            'sim_id': rr['sim_id'],
+                            #'sim_id': rr['sim_id'],
                             'read': int(rr['read']),
                             'type': int(rr['type']),
                             'service_center': rr['service_center'],
                             'address': rr['address'],
                             'locked': int(rr['locked']),
                             'reply_path_present': int(rr['reply_path_present']),
-                            'person': int(rr['person']),
-                            'thread_id': int(rr['thread_id']),
+                            #'person': int(rr['person']),
+                            #'thread_id': int(rr['thread_id']),
                             'date': long(rr['date']),
-                            'date_sent': long(rr['date_sent']),
+                            #'date_sent': long(rr['date_sent']),
                             'seen': int(rr['seen']),
                             'o_id': int(rr['_id']),
                             'error_code': rr['error_code'],

@@ -1,9 +1,14 @@
-
 * 好吧. 是得写个简要的说明
 
 # 安卓手机安装 sl4a 没错. 推荐 sl4a r6
 # 手机上运行 sl4a 配置 sl4a server 端口. 
 # 手机上运行 sl4a public server 监听例如 4000 端口
 # OpenERP 安装模块, 并配置 sl4a 参数. 指向你的android手机的ip:4000
-# 然后... 基本上就木有然后了.... 过一段时间,你会发现 手机上的短消息都在 OpenERP 中可以查到了.
+## 配置
+### 添加 Android Device
+### 为 Android Device 添加对应的 SIM Card
+# 然后... 基本上就木有然后了.... 在相应的 SIM Card 界面上点击 "SMS Receive" 即可获取该手机上的 收件箱中的短消息.
+
+
+# 最后, 发送部分请联系作者.
 

@@ -1,6 +1,6 @@
 * 好吧. 是得写个简要的说明
 
-# 安卓手机安装 sl4a 没错. 推荐 sl4a r6
+# 安卓手机安装 sl4a 没错. 推荐 sl4a r6 [http://android-scripting.googlecode.com/files/sl4a_r6.apk]
 # 手机上运行 sl4a 配置 sl4a server 端口. 
 # 手机上运行 sl4a public server 监听例如 4000 端口
 # OpenERP 安装模块, 并配置 sl4a 参数. 指向你的android手机的ip:4000

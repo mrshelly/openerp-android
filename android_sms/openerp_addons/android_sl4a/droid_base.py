@@ -5,7 +5,7 @@ socket.setdefaulttimeout(3)
 
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
-from openerp.android_sl4a.sl4a import android
+from openerp.addons.android_sl4a.sl4a import android
 
 socket_trytimes = [0.1, 2]
 

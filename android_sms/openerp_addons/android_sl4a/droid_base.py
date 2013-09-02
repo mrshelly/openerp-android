@@ -147,7 +147,9 @@ class sim_card(osv.osv):
         for r in res:
             if r.device_id.sms_simcard_id.id != r.id:
                 continue
-            device_obj.test_connect(cr, uid, r.device_id.id, context=context)
+            tmp_ret = device_obj.test_connect(cr, uid, r.device_id.id, context=context)
+            if tmp_ret.has_key(str(r.device_id.id)):
+                raise osv.except_osv(_('Error!'),_("Can't connect the android device") + r.device_id.name)
             if r.active:
                 attrs = device_obj._droid[str(r.device_id.id)].smsGetAttributes().result
                 time.sleep(0.01)
